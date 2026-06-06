@@ -100,3 +100,25 @@ Para rodar os testes:
 ```bash
 npm test
 ```
+
+## Docker
+
+Build local da imagem:
+
+```bash
+docker build -t rotacerta-microservico-sql:v1 .
+```
+
+Execucao local em container usando as variaveis do arquivo `.env`:
+
+```bash
+docker run --rm -p 3001:3001 --env-file .env rotacerta-microservico-sql:v1
+```
+
+Publicacao no Docker Hub:
+
+```bash
+docker login
+docker build -t <usuario-dockerhub>/rotacerta-microservico-sql:v1 .
+docker push <usuario-dockerhub>/rotacerta-microservico-sql:v1
+```
