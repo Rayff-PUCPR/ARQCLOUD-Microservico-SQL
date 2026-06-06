@@ -29,6 +29,11 @@ export class Driver {
     return new Driver(props);
   }
 
+  updateStatus(status: DriverStatus) {
+    this.props.status = status;
+    this.props.updatedAt = new Date().toISOString();
+  }
+
   toJSON(): DriverProps {
     return { ...this.props };
   }

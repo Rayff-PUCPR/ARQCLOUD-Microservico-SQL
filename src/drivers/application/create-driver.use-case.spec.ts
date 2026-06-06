@@ -16,6 +16,16 @@ class FakeDriverRepository implements DriverRepository {
     return this.drivers;
   }
 
+  async findById(id: string) {
+    return this.drivers.find((driver) => driver.id === id);
+  }
+
+  async save(driver: Driver) {
+    const props = driver.toJSON();
+    this.drivers = this.drivers.map((item) => (item.id === props.id ? props : item));
+    return props;
+  }
+
   async reset() {
     this.drivers = [];
   }

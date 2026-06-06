@@ -36,6 +36,16 @@ export class InMemoryDriverRepository implements DriverRepository {
     return Array.from(this.drivers.values());
   }
 
+  async findById(id: string) {
+    return this.drivers.get(id);
+  }
+
+  async save(driver: Driver) {
+    const props = driver.toJSON();
+    this.drivers.set(props.id, props);
+    return props;
+  }
+
   async reset() {
     this.drivers.clear();
   }
